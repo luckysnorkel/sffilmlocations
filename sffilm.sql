@@ -6,6 +6,13 @@ FROM film_locations_sf;
 SELECT COUNT(DISTINCT Title)
 FROM film_locations_sf;
 
+-- Most popular film locations
+SELECT Locations,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+GROUP BY Locations
+ORDER BY n_films DESC;
+
 -- Films with the most distinct filming locations
 SELECT Title, 
 COUNT(DISTINCT Locations) as n_locations
@@ -70,6 +77,64 @@ ORDER BY n_films DESC;
 SELECT CurrentSupervisorDistricts,
 COUNT(DISTINCT Title) AS n_films
 FROM film_locations_sf
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+-- Supervisor districts with the most titles filmed within, by decade
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 1915 AND 1949
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 1950 AND 1959
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 1960 AND 1969
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 1970 AND 1979
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 1980 AND 1989
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 1990 AND 1999
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 2000 AND 2009
+GROUP BY CurrentSupervisorDistricts
+ORDER BY n_films DESC;
+
+SELECT CurrentSupervisorDistricts,
+COUNT(DISTINCT Title) AS n_films
+FROM film_locations_sf
+WHERE ReleaseYear BETWEEN 2010 AND 2023
 GROUP BY CurrentSupervisorDistricts
 ORDER BY n_films DESC;
 
