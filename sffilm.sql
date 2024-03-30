@@ -2,7 +2,7 @@
 SELECT COUNT(DISTINCT Locations)
 FROM film_locations_sf;
 
--- # of different films
+-- # of different films/shows
 SELECT COUNT(DISTINCT Title)
 FROM film_locations_sf;
 
@@ -13,34 +13,53 @@ FROM film_locations_sf
 GROUP BY Locations
 ORDER BY n_films DESC;
 
--- Films with the most distinct filming locations
+-- Titles with the most filming locations
 SELECT Title, 
 COUNT(DISTINCT Locations) as n_locations
 FROM film_locations_sf
 GROUP BY Title
 ORDER BY n_locations DESC;
 
--- # of different films by year
+-- Titles with the most diverse filming locations
+SELECT Title,
+COUNT(DISTINCT CurrentSupervisorDistricts) as n_districts,
+COUNT(DISTINCT Locations) AS n_locations
+FROM film_locations_sf
+GROUP BY Title
+HAVING COUNT(DISTINCT CurrentSupervisorDistricts) > 4
+ORDER BY n_districts DESC, n_locations DESC;
+
+-- Titles with the least diverse filming locations
+SELECT Title,
+COUNT(DISTINCT CurrentSupervisorDistricts) as n_districts,
+COUNT(DISTINCT Locations) AS n_locations
+FROM film_locations_sf
+WHERE CurrentSupervisorDistricts IS NOT NULL
+GROUP BY Title
+HAVING COUNT(DISTINCT Locations) > 3
+ORDER BY n_districts ASC, n_locations DESC;
+
+-- # of different titles by year
 SELECT ReleaseYear,
 COUNT(DISTINCT Title) AS n_films
 FROM film_locations_sf
 GROUP BY ReleaseYear;
 
--- # of different films by director
+-- # of different titles by director
 SELECT Director,
 COUNT(DISTINCT Title) AS n_films
 FROM film_locations_SF
 GROUP BY Director
 ORDER BY n_films DESC;
 
--- # of different films by writer
+-- # of different titles by writer
 SELECT Writer,
 COUNT(DISTINCT Title) AS n_films
 FROM film_locations_SF
 GROUP BY Writer
 ORDER BY n_films DESC;
 
--- # of different films by actor
+-- # of different titles by actor
 SELECT actor,
 COUNT(DISTINCT Title) as n_films
 FROM
@@ -59,14 +78,14 @@ WHERE actor IS NOT NULL
 GROUP BY actor
 ORDER BY n_films DESC;
 
--- # of different films by production company
+-- # of different titles by production company
 SELECT productioncompany,
 COUNT(DISTINCT Title) AS n_films
 FROM film_locations_sf
 GROUP BY productioncompany
 ORDER BY n_films DESC;
 
--- # of different films by distributor
+-- # of different titles by distributor
 SELECT distributor,
 COUNT(DISTINCT Title) AS n_films
 FROM film_locations_sf
