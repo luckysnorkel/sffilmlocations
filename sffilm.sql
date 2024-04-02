@@ -39,6 +39,38 @@ GROUP BY Title
 HAVING COUNT(DISTINCT Locations) > 3
 ORDER BY n_districts ASC, n_locations DESC;
 
+-- Location diversity by year
+SELECT
+    ReleaseYear,
+    Title,
+    COUNT(DISTINCT CurrentSupervisorDistricts) AS DistrictsDiversity
+FROM
+    film_locations_sf
+GROUP BY
+    ReleaseYear, Title
+ORDER BY
+    ReleaseYear ASC, DistrictsDiversity DESC;
+	
+-- Change in average diversity
+SELECT
+    ReleaseYear,
+    AVG(DistrictsDiversity) AS AvgDistrictsDiversity
+FROM (
+    SELECT
+        ReleaseYear,
+        Title,
+        COUNT(DISTINCT CurrentSupervisorDistricts) AS DistrictsDiversity
+    FROM
+        film_locations_sf
+    GROUP BY
+        ReleaseYear, Title
+) AS YearlyDiversity
+GROUP BY
+    ReleaseYear
+ORDER BY
+    ReleaseYear ASC;
+
+
 -- # of different titles by year
 SELECT ReleaseYear,
 COUNT(DISTINCT Title) AS n_films
