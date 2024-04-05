@@ -193,3 +193,40 @@ ORDER BY n_films DESC;
 SELECT Title, Locations
 FROM film_locations_sf
 WHERE currentsupervisordistricts IS NULL;
+
+--- Popularity/budget vs diversity
+-- Joining with Kaggle dataset
+CREATE TABLE sf_film_stats AS
+SELECT DISTINCT a.title, 
+	b.imdb_id, 
+	a.releaseyear, 
+	b.release_date, 
+	b.budget, 
+	b.revenue, 
+	b.popularity,
+	b.vote_average
+FROM film_locations_sf a
+LEFT JOIN tmdb_movie_dataset b
+ON a.title = b.title
+WHERE SUBSTRING(b.release_date, 1, 4) = CAST(a.releaseyear AS varchar)
+OR SUBSTRING(b.release_date, 1, 4) = CAST((a.releaseyear + 1) AS varchar);
+
+-- Creating table of diversity stats per title
+CREATE TABLE sf_diversity AS
+SELECT Title,
+    COUNT(DISTINCT CurrentSupervisorDistricts) AS DistrictsDiversity
+FROM film_locations_sf
+GROUP BY Title;
+
+-- Joining new tables and analyzing correlations
+SELECT a.title,
+	a.budget,
+	a.revenue,
+	a.popularity,
+	a.vote_average,
+	b.districtsdiversity
+FROM sf_film_stats a
+JOIN sf_diversity b
+ON a.title = b.title
+WHERE vote_average != 0
+ORDER BY popularity DESC;
