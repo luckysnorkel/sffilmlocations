@@ -1,4 +1,4 @@
-# San Francisco Film Locations, 1915 - 2023
+# A Deep Dive Into the Diversity of San Francisco Film Locations, 1915 - 2023
 
 I moved to San Francisco in 2010. I love the city dearly and am proud to call it my home. Its reputation has suffered recently, in large part due to biased national news reporting. But perhaps the news isn’t wholly to blame for this misperception.
 
