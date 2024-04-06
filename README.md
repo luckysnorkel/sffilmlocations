@@ -5,8 +5,9 @@ I moved to San Francisco in 2010. I love the city dearly and am proud to call it
 The longer I’ve lived here, the more I’ve come to realize that the San Francisco that’s so often portrayed in films and television tends to be limited to a small pocket of the city. So perhaps the average American’s media-driven perception of how San Francisco “used to be” feeds into this overblown viewpoint of a city in decline. I decided to undergo an analysis of city filming locations to answer the following questions:
 
 1. How have the number and scope of citywide filming locations changed over time?
-2. Which titles offer the most diverse and balanced portrayals of San Francisco?
-3. How does diversity of SF portrayal correlate to the most popular and profitable films and television shows?
+2. How do the most-filmed districts correlate with actual San Francisco demographics?
+3. Which titles offer the most diverse and balanced portrayals of San Francisco?
+4. How does diversity of SF portrayal correlate to the most popular and profitable films and television shows?
 
 Data source: DataSF, Open data project
 
