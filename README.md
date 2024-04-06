@@ -10,6 +10,6 @@ The longer I’ve lived here, the more I’ve come to realize that the San Franc
 
 Data source: DataSF, Open data project
 
-Refer to `sffilm.sql` for a closer look at the queries I used for my analysis.
+Refer to `sffilm.sql` for all of the queries I used for my analysis.
 
 Check out an interactive visualization of the data [HERE](https://public.tableau.com/app/profile/katelyn.mueller.mclean/viz/SanFranciscoFilmingLocations/Dashboard1).
