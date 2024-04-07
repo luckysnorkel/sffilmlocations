@@ -1,15 +1,13 @@
 # A Deep Dive Into the Diversity of San Francisco Film Locations, 1915 - 2023
 
-I moved to San Francisco in 2010. I love the city dearly and am proud to call it my home. Its reputation has suffered recently, in large part due to biased national news reporting. But perhaps the news isn’t wholly to blame for this misperception.
-
-The longer I’ve lived here, the more I’ve come to realize that the San Francisco that’s so often portrayed in films and television tends to be limited to a small pocket of the city. So perhaps the average American’s media-driven perception of how San Francisco “used to be” feeds into this skewed viewpoint of a city in decline. I decided to undergo an analysis of city filming locations to answer the following questions:
-
 1. How have the number and scope of citywide filming locations changed over time?
 2. How do the most-filmed districts correlate with actual San Francisco demographics?
 3. Which titles offer the most diverse and balanced portrayals of San Francisco?
 4. How does diversity of SF portrayal correlate to the most popular and profitable films and television shows?
 
-Data source: DataSF, Open data project
+Data sources: 
+* SF Film Locations: DataSF, Open data project https://data.sfgov.org/Culture-and-Recreation/Film-Locations-in-San-Francisco/yitu-d5am/about_data 
+* Film budget and popularity: https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies 
 
 Read my full analysis at `san-francisco-film-locations.ipynb`.
 
