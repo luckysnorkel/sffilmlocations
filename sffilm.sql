@@ -1,3 +1,4 @@
+--- Part I: General film location stats
 -- # of different filming locations
 SELECT COUNT(DISTINCT Locations)
 FROM film_locations_sf;
@@ -194,8 +195,11 @@ SELECT Title, Locations
 FROM film_locations_sf
 WHERE currentsupervisordistricts IS NULL;
 
---- Popularity/budget vs diversity
--- Joining with Kaggle dataset
+--- Part II: Filming location data vs SF district data
+
+
+--- Part III: Filming location data vs film data
+-- Joining with Kaggle film dataset
 CREATE TABLE sf_film_stats AS
 SELECT DISTINCT a.title, 
 	b.imdb_id, 
@@ -204,7 +208,8 @@ SELECT DISTINCT a.title,
 	b.budget, 
 	b.revenue, 
 	b.popularity,
-	b.vote_average
+	b.vote_average,
+	b.overview
 FROM film_locations_sf a
 LEFT JOIN tmdb_movie_dataset b
 ON a.title = b.title
@@ -224,7 +229,8 @@ SELECT a.title,
 	a.revenue,
 	a.popularity,
 	a.vote_average,
-	b.districtsdiversity
+	b.districtsdiversity,
+	a.overview
 FROM sf_film_stats a
 JOIN sf_diversity b
 ON a.title = b.title
